@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Comment and Point App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div id="usernamePrompt" class="modal">
+        <div class="modal-content">
+            <h2>Welcome</h2>
+            <input type="text" id="username" placeholder="Enter username">
+            <button onclick="saveUsername()">Set Username</button>
+        </div>
+    </div>
+    <header>
+        <h1>Image Comment and Point App</h1>
+    </header>
+    <main>
+        <section id="projectSection">
+            <h2>Projects</h2>
+            <ul id="projectsList" class="list"></ul>
+        </section>
+        <section id="revisionSection">
+            <h2>Revisions</h2>
+            <ul id="revisionsList" class="list"></ul>
+        </section>
+        <section id="imageSection">
+            <div id="imageCanvasContainer">
+                <img id="currentImage" />
+                <canvas id="imageCanvas"></canvas>
+            </div>
+        </section>
+        <section id="commentsSection">
+            <h2>Comments</h2>
+            <div id="comments"></div>
+        </section>
+    </main>
+    <aside id="projectForms">
+        <form id="uploadForm" enctype="multipart/form-data" class="form">
+            <h3>Create New Project</h3>
+            <input type="text" id="projectName" name="projectName" placeholder="Enter project name" required>
+            <input type="file" id="imageInput" name="image" accept="image/*" required>
+            <button type="submit" id="createProjectBtn">Create New Project</button>
+        </form>
+        <form id="revisionForm" enctype="multipart/form-data" class="form">
+            <h3>Add New Revision</h3>
+            <input type="file" id="revisionImageInput" name="image" accept="image/*">
+            <button type="button" onclick="createNewRevision()">Create New Revision</button>
+        </form>
+    </aside>
+    <div id="commentForm" class="modal">
+        <div class="modal-content">
+            <textarea id="commentBox" placeholder="Enter comment"></textarea>
+            <button onclick="submitComment()">Submit Comment</button>
+        </div>
+    </div>
+    <div id="chat" class="chat-box"></div>
+</body>
+</html>
